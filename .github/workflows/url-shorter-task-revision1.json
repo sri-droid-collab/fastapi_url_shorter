@@ -1,0 +1,104 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:202977753481:task-definition/url-shorter-task:1",
+    "containerDefinitions": [
+        {
+            "name": "url-shorter-container",
+            "image": "IMAGE_URL",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "url-shorter-container-8000-tcp",
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "MONGODB_USERNAME",
+                    "value": "srimurugansoftsuave_db_user"
+                },
+                {
+                    "name": "MONGODB_PASSWORD",
+                    "value": "Qmakqbk4QyDDpobA"
+                },
+                {
+                    "name": "MONGODB_HOSTNAME",
+                    "value": "url-shorter.1v0e60n.mongodb.net/?appName=url-shorter"
+                },
+                {
+                    "name": "MONGODB_DATABASE_NAME",
+                    "value": "url_shortener"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/url-shorter-task",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "url-shorter-task",
+    "executionRoleArn": "arn:aws:iam::202977753481:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE",
+        "MANAGED_INSTANCES"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2026-03-12T12:57:26.464Z",
+    "registeredBy": "arn:aws:iam::202977753481:root",
+    "enableFaultInjection": false,
+    "tags": []
+}

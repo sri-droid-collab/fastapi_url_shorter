@@ -41,3 +41,19 @@ jobs:
         run: |
           docker push $IMAGE_URI:${{ github.ref_name }}
           docker push $IMAGE_URI:latest
+
+      - name: Fill ECS Task Definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ecs-task-definition.json
+          container-name: url-shorter-container
+          image: $IMAGE_URI:${{ github.ref_name }}
+
+      - name: Deploy ECS Task Definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: fastapi-service
+          cluster: fastapi-cluster
+          wait-for-service-stability: true
