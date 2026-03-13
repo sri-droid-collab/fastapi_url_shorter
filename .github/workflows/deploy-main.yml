@@ -53,6 +53,9 @@ jobs:
       - name: Debug Image URI
         run: echo "$IMAGE_URI:${{ github.sha }}"
 
+      - name: Print rendered task definition
+        run: cat ${{ steps.task-def.outputs.task-definition }}
+
       - name: Deploy ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
