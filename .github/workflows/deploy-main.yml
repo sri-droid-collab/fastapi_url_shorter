@@ -34,12 +34,12 @@ jobs:
 
       - name: Tag Image
         run: |
-          docker tag fastapi-app:latest $IMAGE_URI:${{ github.ref_name }}
+          docker tag fastapi-app:latest $IMAGE_URI:${{ github.sha }}
           docker tag fastapi-app:latest $IMAGE_URI:latest
 
       - name: Push Image
         run: |
-          docker push $IMAGE_URI:${{ github.ref_name }}
+          docker push $IMAGE_URI:${{ github.sha }}
           docker push $IMAGE_URI:latest
 
       - name: Fill ECS Task Definition
@@ -48,10 +48,10 @@ jobs:
         with:
           task-definition: deploy/url-shorter-task.json
           container-name: url-shorter-container
-          image: $IMAGE_URI:${{ github.ref_name }}
+          image: $IMAGE_URI:${{ github.sha }}
 
       - name: Debug Image URI
-        run: echo "$IMAGE_URI:${{ github.ref_name }}"
+        run: echo "$IMAGE_URI:${{ github.sha }}"
 
       - name: Deploy ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
