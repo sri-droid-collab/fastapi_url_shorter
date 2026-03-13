@@ -60,6 +60,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: fastapi-service
+          service: url-shorter-task-service-ov57ngit
           cluster: fastapi-cluster
           wait-for-service-stability: true
