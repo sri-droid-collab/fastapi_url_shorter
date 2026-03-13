@@ -48,7 +48,7 @@ jobs:
         with:
           task-definition: deploy/url-shorter-task.json
           container-name: url-shorter-container
-          image: $IMAGE_URI:${{ github.sha }}
+          image: ${{ env.IMAGE_URI }}:${{ github.sha }}
 
       - name: Debug Image URI
         run: echo "$IMAGE_URI:${{ github.sha }}"
