@@ -50,6 +50,9 @@ jobs:
           container-name: url-shorter-container
           image: $IMAGE_URI:${{ github.ref_name }}
 
+      - name: Debug Image URI
+        run: echo "$IMAGE_URI:${{ github.ref_name }}"
+
       - name: Deploy ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
