@@ -1,7 +1,7 @@
-from pydantic import computed_field
-from pydantic_settings import BaseSettings
 import os
 from dotenv import load_dotenv
+from pydantic import computed_field
+from pydantic_settings import BaseSettings
 
 load_dotenv()
 
@@ -30,4 +30,5 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 
+# Single shared instance — import this everywhere you need settings
 settings = Settings()

@@ -2,7 +2,7 @@ import secrets
 import string
 
 SHORT_CODE_LENGTH = 6
-ALPHABET = string.ascii_letters + string.digits  # A-Z, a-z, 0-9
+ALPHABET = string.ascii_letters + string.digits  # A–Z, a–z, 0–9
 
 
 def generate_short_code() -> str:
